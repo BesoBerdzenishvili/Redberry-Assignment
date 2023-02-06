@@ -14,4 +14,11 @@ export const {
 });
 export const globalStyles = globalCss({
   "*": { margin: 0, padding: 0, boxSizing: "border-box" },
+  body: {
+    "@fontFace": {
+      fontFamily: "Helvetica",
+      src: 'local("HelveticaNeue"), url("./assets/HelveticaNeue.ttc") format("ttc")',
+    },
+    fontFamily: "Helvetica",
+  },
 });
