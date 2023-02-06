@@ -4,13 +4,16 @@ import App from "./App";
 import "./index.css";
 import { globalStyles } from "./stitches.config";
 import { BrowserRouter } from "react-router-dom";
+import ResumeContextProvider from "./contexts/resumeContext";
 
 globalStyles();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ResumeContextProvider>
+        <App />
+      </ResumeContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
