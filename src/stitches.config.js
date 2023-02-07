@@ -17,7 +17,7 @@ export const globalStyles = globalCss({
   body: {
     "@fontFace": {
       fontFamily: "Helvetica",
-      src: 'local("HelveticaNeue"), url("./assets/HelveticaNeue.ttc") format("ttc")',
+      src: 'local("HelveticaNeue"), url("./assets/fonts/HelveticaNeue.ttc") format("ttc")',
     },
     fontFamily: "Helvetica",
   },
