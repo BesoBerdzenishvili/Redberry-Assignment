@@ -1,16 +1,63 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ResumeContext = createContext();
 
 const ResumeContextProvider = ({ children }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [job, setJob] = useState([]);
-  const [educationalInstitute, setEducationalInstitute] = useState([]);
+  const [firstName, setFirstName] = useState(() => {
+    const saved = localStorage.getItem("firstName");
+    return saved ? JSON.parse(saved) : "";
+  });
+  const [lastName, setLastName] = useState(() => {
+    const saved = localStorage.getItem("lastName");
+    return saved ? JSON.parse(saved) : "";
+  });
+  const [photo, setPhoto] = useState(() => {
+    const saved = localStorage.getItem("photo");
+    return saved ? JSON.parse(saved) : "";
+  });
+  const [aboutMe, setAboutMe] = useState(() => {
+    const saved = localStorage.getItem("aboutMe");
+    return saved ? JSON.parse(saved) : "";
+  });
+  const [email, setEmail] = useState(() => {
+    const saved = localStorage.getItem("email");
+    return saved ? JSON.parse(saved) : "";
+  });
+  const [mobile, setMobile] = useState(() => {
+    const saved = localStorage.getItem("mobile");
+    return saved ? JSON.parse(saved) : "";
+  });
+  const [job, setJob] = useState(() => {
+    const saved = localStorage.getItem("job");
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [educationalInstitute, setEducationalInstitute] = useState(() => {
+    const saved = localStorage.getItem("educationalInstitute");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("firstName", JSON.stringify(firstName));
+    localStorage.setItem("lastName", JSON.stringify(lastName));
+    localStorage.setItem("photo", JSON.stringify(photo));
+    localStorage.setItem("aboutMe", JSON.stringify(aboutMe));
+    localStorage.setItem("email", JSON.stringify(email));
+    localStorage.setItem("mobile", JSON.stringify(mobile));
+    localStorage.setItem("job", JSON.stringify(job));
+    localStorage.setItem(
+      "educationalInstitute",
+      JSON.stringify(educationalInstitute)
+    );
+  }, [
+    firstName,
+    lastName,
+    photo,
+    aboutMe,
+    email,
+    mobile,
+    job,
+    educationalInstitute,
+  ]);
 
   return (
     <ResumeContext.Provider
