@@ -9,19 +9,9 @@ const ResumeContextProvider = ({ children }) => {
   const [aboutMe, setAboutMe] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const [job, setJob] = useState([
-    {
-      id: 1,
-      position: "",
-      employer: "",
-      startDate: "",
-      endDate: "",
-      description: "",
-    },
-  ]);
-  const [educationalInstitute, setEducationalInstitute] = useState([
-    { id: 1, school: "", degree: "", endDate: "", description: "" },
-  ]);
+  const [job, setJob] = useState([]);
+  const [educationalInstitute, setEducationalInstitute] = useState([]);
+
   return (
     <ResumeContext.Provider
       value={{
