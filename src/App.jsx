@@ -3,7 +3,7 @@ import Education from "./pages/Education";
 import Experience from "./pages/Experience";
 import Home from "./pages/Home";
 import Personal from "./pages/Personal";
-import Resume from "./pages/Resume";
+import ResumePage from "./pages/ResumePage";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route path="personal" element={<Personal />} />
         <Route path="experience" element={<Experience />} />
         <Route path="education" element={<Education />} />
-        <Route path="resume" element={<Resume />} />
+        <Route path="resume" element={<ResumePage />} />
       </Routes>
     </div>
   );

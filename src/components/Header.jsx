@@ -70,19 +70,8 @@ export default function Header({ pageTitle, pageNumber }) {
     setAboutMe("");
     setEmail("");
     setMobile("");
-    setJob([
-      {
-        id: 1,
-        position: "",
-        employer: "",
-        startDate: "",
-        endDate: "",
-        description: "",
-      },
-    ]);
-    setEducationalInstitute([
-      { id: 1, school: "", degree: "", endDate: "", description: "" },
-    ]);
+    setJob([]);
+    setEducationalInstitute([]);
   };
   return (
     <HeaderContainer>
