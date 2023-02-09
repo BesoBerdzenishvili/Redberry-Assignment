@@ -22,7 +22,7 @@ export default function ({
   return (
     <div>
       <Title>
-        {position}, {organisation}
+        {position && position + ","} {organisation}
       </Title>
       <Dates>
         {startDate && startDate} {startDate && "-"} {endDate}

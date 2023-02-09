@@ -29,7 +29,18 @@ const ResumeContextProvider = ({ children }) => {
   });
   const [job, setJob] = useState(() => {
     const saved = localStorage.getItem("job");
-    return saved ? JSON.parse(saved) : [];
+    return saved
+      ? JSON.parse(saved)
+      : [
+          {
+            id: 1,
+            position: "",
+            employer: "",
+            startDate: "",
+            endDate: "",
+            description: "",
+          },
+        ];
   });
   const [educationalInstitute, setEducationalInstitute] = useState(() => {
     const saved = localStorage.getItem("educationalInstitute");

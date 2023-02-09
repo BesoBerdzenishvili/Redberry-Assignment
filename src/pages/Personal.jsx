@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { styled } from "../stitches.config";
+import { ResumeContext } from "../contexts/resumeContext";
+import { Link } from "react-router-dom";
 import Resume from "../components/Resume";
 import RefreshBtn from "../components/RefreshBtn";
 import Header from "../components/Header";
 import Footer from "../layout/Footer";
 import Button from "../components/Button";
-import { ResumeContext } from "../contexts/resumeContext";
 
 const Container = styled("div", {
   position: "relative",
@@ -198,7 +199,9 @@ export default function Personal() {
           </label>
         </Form>
         <Footer one>
-          <Button variant="nextPrevBtn">შემდეგი</Button>
+          <Link to="/experience">
+            <Button variant="nextPrevBtn">შემდეგი</Button>
+          </Link>
         </Footer>
       </LeftContainer>
       <Resume />
