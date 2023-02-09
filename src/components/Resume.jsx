@@ -11,6 +11,7 @@ const Container = styled("div", {
   position: "relative",
 
   maxWidth: 822,
+  width: "100%",
   minHeight: 1080,
   padding: "40px 80px 120px 80px",
 
@@ -35,6 +36,11 @@ const Contact = styled("p", {
   fontSize: 18,
   color: "#1A1A1A",
   marginTop: 10,
+  display: "flex",
+
+  "& img": {
+    marginRight: 11,
+  },
 });
 
 const Subheader = styled("p", {
@@ -75,13 +81,16 @@ export default function Resume() {
           <FullName>
             {firstName && firstName} {lastName && lastName}
           </FullName>
-          <Contact>
-            {email &&
-              <img src={at} alt="at sign (a in circle)" /> + " " + email}
-          </Contact>
-          <Contact>
-            {mobile && <img src={phone} alt="phone sign" /> + " " + mobile}
-          </Contact>
+          {email && (
+            <Contact>
+              <img src={at} alt="at sign (a in circle)" /> {email}
+            </Contact>
+          )}
+          {mobile && (
+            <Contact>
+              <img src={phone} alt="phone sign" /> {mobile}
+            </Contact>
+          )}
           {aboutMe && <Subheader>ჩემ შესახებ</Subheader>}
           <p>{aboutMe && aboutMe}</p>
         </div>
