@@ -14,7 +14,7 @@ const Container = styled("div", {
   fontFamily: "Helvetica Neue",
   fontStyle: "normal",
   color: "#1A1A1A",
-  padding: "47px 0 12px 0",
+  paddingBottom: 12,
 });
 
 const PageTitle = styled("p", {
