@@ -31,7 +31,16 @@ export default function RefreshBtn() {
     setAboutMe("");
     setEmail("");
     setMobile("");
-    setJob([]);
+    setJob([
+      {
+        id: 1,
+        position: "",
+        employer: "",
+        startDate: "",
+        endDate: "",
+        description: "",
+      },
+    ]);
     setEducationalInstitute([]);
   };
   return (

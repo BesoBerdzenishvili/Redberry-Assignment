@@ -28,7 +28,7 @@ export default function Home() {
   document.body.style.backgroundPosition = `0 0, 1076px 473px, 70px 89px, 70px 25px`;
 
   return (
-    <Link to="personal">
+    <Link to="/personal">
       <Button>რეზიუმეს დამატება</Button>
     </Link>
   );
