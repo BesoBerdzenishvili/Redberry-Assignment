@@ -102,23 +102,23 @@ const Form = styled("form", {
 
 export default function Personal() {
   const {
-    firstName,
-    setFirstName,
-    lastName,
-    setLastName,
-    photo,
-    setPhoto,
+    name,
+    setName,
+    surname,
+    setSurname,
+    image,
+    setImage,
     aboutMe,
     setAboutMe,
     email,
     setEmail,
-    mobile,
-    setMobile,
+    phone,
+    setPhone,
   } = useContext(ResumeContext);
 
   const handleImgChange = (e) => {
     const [file] = e.target.files;
-    setPhoto(URL.createObjectURL(file));
+    setImage(URL.createObjectURL(file));
   };
 
   return (
@@ -135,8 +135,8 @@ export default function Personal() {
                 type="text"
                 placeholder="ანზორ"
                 className="fullname"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <p>მინიმუმ 2 ასო, ქართული ასოები</p>
             </label>
@@ -147,8 +147,8 @@ export default function Personal() {
                 type="text"
                 placeholder="მუმლაძე"
                 className="fullname"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
               />
               <p>მინიმუმ 2 ასო, ქართული ასოები</p>
             </label>
@@ -158,7 +158,7 @@ export default function Personal() {
             <input
               type="file"
               className="photo"
-              value={photo}
+              value={image}
               onChange={handleImgChange}
             />
           </label>
@@ -192,8 +192,8 @@ export default function Personal() {
             <input
               type="tel"
               placeholder="+995 551 12 34 56"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
             />
             <p>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</p>
           </label>

@@ -14,35 +14,35 @@ const Img = styled("img", {
 
 export default function RefreshBtn() {
   const {
-    setFirstName,
-    setLastName,
-    setPhoto,
+    setName,
+    setSurname,
+    setImage,
     setAboutMe,
     setEmail,
-    setMobile,
-    setJob,
-    setEducationalInstitute,
+    setPhone,
+    setExperiences,
+    setEducations,
   } = useContext(ResumeContext);
 
   const handleClick = () => {
-    setFirstName("");
-    setLastName("");
-    setPhoto("");
+    setName("");
+    setSurname("");
+    setImage("");
     setAboutMe("");
     setEmail("");
-    setMobile("");
-    setJob([
+    setPhone("");
+    setExperiences([
       {
         id: 1,
         position: "",
         employer: "",
-        startDate: "",
-        endDate: "",
+        start_date: "",
+        due_date: "",
         description: "",
       },
     ]);
-    setEducationalInstitute([
-      { id: 1, school: "", degree: "", endDate: "", description: "" },
+    setEducations([
+      { id: 1, institute: "", degree: "", due_date: "", description: "" },
     ]);
   };
   return (

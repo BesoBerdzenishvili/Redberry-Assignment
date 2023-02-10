@@ -29,17 +29,17 @@ const Hr = styled("div", {
 });
 
 export default function Experience() {
-  const { job, setJob } = useContext(ResumeContext);
+  const { experiences, setExperiences } = useContext(ResumeContext);
 
   const handleClick = () => {
-    setJob([
-      ...job,
+    setExperiences([
+      ...experiences,
       {
-        id: job.length + 1,
+        id: experiences.length + 1,
         position: "",
         employer: "",
-        startDate: "",
-        endDate: "",
+        start_date: "",
+        due_date: "",
         description: "",
       },
     ]);
@@ -51,8 +51,13 @@ export default function Experience() {
         <RefreshBtn />
         <Header pageNumber="2" pageTitle="გამოცდილება" />
 
-        {job.map((i, index) => (
-          <Job job={job[index]} jobs={job} setJob={setJob} key={i.id} />
+        {experiences.map((i, index) => (
+          <Job
+            experience={experiences[index]}
+            experiences={experiences}
+            setExperiences={setExperiences}
+            key={i.id}
+          />
         ))}
 
         <Hr />
