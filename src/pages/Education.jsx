@@ -30,34 +30,33 @@ const Hr = styled("div", {
 
 export default function Education() {
   const {
-    firstName,
-    setFirstName,
-    lastName,
-    setLastName,
-    photo,
-    setPhoto,
+    name,
+    setName,
+    surname,
+    setSurname,
+    image,
+    setImage,
     aboutMe,
     setAboutMe,
     email,
     setEmail,
-    mobile,
-    setMobile,
-    job,
-    setJob,
-    educationalInstitute,
-    setEducationalInstitute,
+    phone,
+    setPhone,
+    experiences,
+    setExperiences,
+    educations,
+    setEducations,
     setResumeData,
   } = useContext(ResumeContext);
 
   const handleClick = () => {
-    setEducationalInstitute([
-      ...educationalInstitute,
+    setEducations([
+      ...educations,
       {
-        id: educationalInstitute.length + 1,
-        position: "",
-        employer: "",
-        startDate: "",
-        endDate: "",
+        id: educations.length + 1,
+        institute: "",
+        degree: "",
+        due_date: "",
         description: "",
       },
     ]);
@@ -65,14 +64,14 @@ export default function Education() {
 
   const handleFinish = () => {
     const data = {
-      firstName: firstName,
-      lastName: lastName,
-      photo: photo,
-      aboutMe: aboutMe,
+      name: name,
+      surname: surname,
+      image: image,
+      about_me: aboutMe,
       email: email,
-      mobile: mobile,
-      job: job,
-      educationalInstitute: educationalInstitute,
+      phone: phone,
+      experiences: experiences,
+      educations: educations,
     };
     setResumeData(data);
 
@@ -98,24 +97,24 @@ export default function Education() {
       }
     };
 
-    setFirstName("");
-    setLastName("");
-    setPhoto("");
+    setName("");
+    setSurname("");
+    setImage("");
     setAboutMe("");
     setEmail("");
-    setMobile("");
-    setJob([
+    setPhone("");
+    setExperiences([
       {
         id: 1,
         position: "",
         employer: "",
-        startDate: "",
-        endDate: "",
+        start_date: "",
+        due_date: "",
         description: "",
       },
     ]);
-    setEducationalInstitute([
-      { id: 1, school: "", degree: "", endDate: "", description: "" },
+    setEducations([
+      { id: 1, institute: "", degree: "", due_date: "", description: "" },
     ]);
   };
 
@@ -125,11 +124,11 @@ export default function Education() {
         <RefreshBtn />
         <Header pageNumber="3" pageTitle="განათლება" />
 
-        {educationalInstitute.map((i, index) => (
+        {educations.map((i, index) => (
           <School
-            educationalInstitute={educationalInstitute[index]}
-            educationalInstitutes={educationalInstitute}
-            setEducationalInstitute={setEducationalInstitute}
+            education={educations[index]}
+            educations={educations}
+            setEducations={setEducations}
             key={i.id}
           />
         ))}

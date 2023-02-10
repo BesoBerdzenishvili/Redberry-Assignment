@@ -85,11 +85,7 @@ const Form = styled("form", {
   },
 });
 
-export default function School({
-  educationalInstitute,
-  educationalInstitutes,
-  setEducationalInstitute,
-}) {
+export default function School({ education, educations, setEducations }) {
   const [degrees, setDegrees] = useState([]);
   useEffect(() => {
     fetch("https://resume.redberryinternship.ge/api/degrees")
@@ -97,11 +93,11 @@ export default function School({
       .then((data) => setDegrees(data));
   }, []);
 
-  const changeSchool = (e) => {
-    setEducationalInstitute(
-      educationalInstitutes.map((i) => {
-        if (i.id === educationalInstitute.id) {
-          return { ...i, school: e.target.value };
+  const changeInstitute = (e) => {
+    setEducations(
+      educations.map((i) => {
+        if (i.id === education.id) {
+          return { ...i, institute: e.target.value };
         } else {
           return i;
         }
@@ -109,9 +105,9 @@ export default function School({
     );
   };
   const changeDegree = (e) => {
-    setEducationalInstitute(
-      educationalInstitutes.map((i) => {
-        if (i.id === educationalInstitute.id) {
+    setEducations(
+      educations.map((i) => {
+        if (i.id === education.id) {
           return { ...i, degree: e.target.value };
         } else {
           return i;
@@ -120,10 +116,10 @@ export default function School({
     );
   };
   const changeEndDate = (e) => {
-    setEducationalInstitute(
-      educationalInstitutes.map((i) => {
-        if (i.id === educationalInstitute.id) {
-          return { ...i, endDate: e.target.value };
+    setEducations(
+      educations.map((i) => {
+        if (i.id === education.id) {
+          return { ...i, due_date: e.target.value };
         } else {
           return i;
         }
@@ -131,9 +127,9 @@ export default function School({
     );
   };
   const changeDescription = (e) => {
-    setEducationalInstitute(
-      educationalInstitutes.map((i) => {
-        if (i.id === educationalInstitute.id) {
+    setEducations(
+      educations.map((i) => {
+        if (i.id === education.id) {
           return { ...i, description: e.target.value };
         } else {
           return i;
@@ -151,8 +147,8 @@ export default function School({
         <input
           type="text"
           placeholder="სასწავლებელი"
-          value={educationalInstitute.school}
-          onChange={changeSchool}
+          value={education.institute}
+          onChange={changeInstitute}
         />
         <p>მინიმუმ 2 სიმბოლო</p>
       </label>
@@ -162,7 +158,7 @@ export default function School({
         <label>
           ხარისხი
           <br />
-          <select value={educationalInstitute.degree} onChange={changeDegree}>
+          <select value={education.degree} onChange={changeDegree}>
             {degrees.map((i) => (
               <option key={i.id} value={i.title}>
                 {i.title}
@@ -177,7 +173,7 @@ export default function School({
             type="date"
             placeholder="mm/dd/yyyy"
             className="fullname"
-            value={educationalInstitute.endDate}
+            value={education.due_date}
             onChange={changeEndDate}
           />
         </label>
@@ -190,7 +186,7 @@ export default function School({
         <textarea
           placeholder="განათლების აღწერა"
           className="aboutMe"
-          value={educationalInstitute.description}
+          value={education.description}
           onChange={changeDescription}
         />
       </label>

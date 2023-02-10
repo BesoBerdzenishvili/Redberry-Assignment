@@ -3,16 +3,16 @@ import { createContext, useState, useEffect } from "react";
 export const ResumeContext = createContext();
 
 const ResumeContextProvider = ({ children }) => {
-  const [firstName, setFirstName] = useState(() => {
-    const saved = localStorage.getItem("firstName");
+  const [name, setName] = useState(() => {
+    const saved = localStorage.getItem("name");
     return saved ? JSON.parse(saved) : "";
   });
-  const [lastName, setLastName] = useState(() => {
-    const saved = localStorage.getItem("lastName");
+  const [surname, setSurname] = useState(() => {
+    const saved = localStorage.getItem("surname");
     return saved ? JSON.parse(saved) : "";
   });
-  const [photo, setPhoto] = useState(() => {
-    const saved = localStorage.getItem("photo");
+  const [image, setImage] = useState(() => {
+    const saved = localStorage.getItem("image");
     return saved ? JSON.parse(saved) : "";
   });
   const [aboutMe, setAboutMe] = useState(() => {
@@ -23,12 +23,12 @@ const ResumeContextProvider = ({ children }) => {
     const saved = localStorage.getItem("email");
     return saved ? JSON.parse(saved) : "";
   });
-  const [mobile, setMobile] = useState(() => {
-    const saved = localStorage.getItem("mobile");
+  const [phone, setPhone] = useState(() => {
+    const saved = localStorage.getItem("phone");
     return saved ? JSON.parse(saved) : "";
   });
-  const [job, setJob] = useState(() => {
-    const saved = localStorage.getItem("job");
+  const [experiences, setExperiences] = useState(() => {
+    const saved = localStorage.getItem("experiences");
     return saved
       ? JSON.parse(saved)
       : [
@@ -36,62 +36,50 @@ const ResumeContextProvider = ({ children }) => {
             id: 1,
             position: "",
             employer: "",
-            startDate: "",
-            endDate: "",
+            start_date: "",
+            due_date: "",
             description: "",
           },
         ];
   });
-  const [educationalInstitute, setEducationalInstitute] = useState(() => {
-    const saved = localStorage.getItem("educationalInstitute");
+  const [educations, setEducations] = useState(() => {
+    const saved = localStorage.getItem("educations");
     return saved
       ? JSON.parse(saved)
-      : [{ id: 1, school: "", degree: "", endDate: "", description: "" }];
+      : [{ id: 1, institute: "", degree: "", due_date: "", description: "" }];
   });
   const [resumeData, setResumeData] = useState({});
 
   useEffect(() => {
-    localStorage.setItem("firstName", JSON.stringify(firstName));
-    localStorage.setItem("lastName", JSON.stringify(lastName));
-    localStorage.setItem("photo", JSON.stringify(photo));
+    localStorage.setItem("name", JSON.stringify(name));
+    localStorage.setItem("surname", JSON.stringify(surname));
+    localStorage.setItem("image", JSON.stringify(image));
     localStorage.setItem("aboutMe", JSON.stringify(aboutMe));
     localStorage.setItem("email", JSON.stringify(email));
-    localStorage.setItem("mobile", JSON.stringify(mobile));
-    localStorage.setItem("job", JSON.stringify(job));
-    localStorage.setItem(
-      "educationalInstitute",
-      JSON.stringify(educationalInstitute)
-    );
-  }, [
-    firstName,
-    lastName,
-    photo,
-    aboutMe,
-    email,
-    mobile,
-    job,
-    educationalInstitute,
-  ]);
+    localStorage.setItem("phone", JSON.stringify(phone));
+    localStorage.setItem("experiences", JSON.stringify(experiences));
+    localStorage.setItem("educations", JSON.stringify(educations));
+  }, [name, surname, image, aboutMe, email, phone, experiences, educations]);
 
   return (
     <ResumeContext.Provider
       value={{
-        firstName,
-        setFirstName,
-        lastName,
-        setLastName,
-        photo,
-        setPhoto,
+        name,
+        setName,
+        surname,
+        setSurname,
+        image,
+        setImage,
         aboutMe,
         setAboutMe,
         email,
         setEmail,
-        mobile,
-        setMobile,
-        job,
-        setJob,
-        educationalInstitute,
-        setEducationalInstitute,
+        phone,
+        setPhone,
+        experiences,
+        setExperiences,
+        educations,
+        setEducations,
         resumeData,
         setResumeData,
       }}

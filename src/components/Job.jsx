@@ -85,11 +85,11 @@ const Form = styled("form", {
   },
 });
 
-export default function Job({ job, jobs, setJob }) {
+export default function Job({ experience, experiences, setExperiences }) {
   const changePosition = (e) => {
-    setJob(
-      jobs.map((i) => {
-        if (i.id === job.id) {
+    setExperiences(
+      experiences.map((i) => {
+        if (i.id === experience.id) {
           return { ...i, position: e.target.value };
         } else {
           return i;
@@ -98,9 +98,9 @@ export default function Job({ job, jobs, setJob }) {
     );
   };
   const changeEmployer = (e) => {
-    setJob(
-      jobs.map((i) => {
-        if (i.id === job.id) {
+    setExperiences(
+      experiences.map((i) => {
+        if (i.id === experience.id) {
           return { ...i, employer: e.target.value };
         } else {
           return i;
@@ -109,10 +109,10 @@ export default function Job({ job, jobs, setJob }) {
     );
   };
   const changeStartDate = (e) => {
-    setJob(
-      jobs.map((i) => {
-        if (i.id === job.id) {
-          return { ...i, startDate: e.target.value };
+    setExperiences(
+      experiences.map((i) => {
+        if (i.id === experience.id) {
+          return { ...i, start_date: e.target.value };
         } else {
           return i;
         }
@@ -120,10 +120,10 @@ export default function Job({ job, jobs, setJob }) {
     );
   };
   const changeEndDate = (e) => {
-    setJob(
-      jobs.map((i) => {
-        if (i.id === job.id) {
-          return { ...i, endDate: e.target.value };
+    setExperiences(
+      experiences.map((i) => {
+        if (i.id === experience.id) {
+          return { ...i, due_date: e.target.value };
         } else {
           return i;
         }
@@ -131,9 +131,9 @@ export default function Job({ job, jobs, setJob }) {
     );
   };
   const changeDescription = (e) => {
-    setJob(
-      jobs.map((i) => {
-        if (i.id === job.id) {
+    setExperiences(
+      experiences.map((i) => {
+        if (i.id === experience.id) {
           return { ...i, description: e.target.value };
         } else {
           return i;
@@ -151,7 +151,7 @@ export default function Job({ job, jobs, setJob }) {
         <input
           type="text"
           placeholder="დეველოპერი, დიზაინერი, ა.შ."
-          value={job.position}
+          value={experience.position}
           onChange={changePosition}
         />
         <p>მინიმუმ 2 სიმბოლო</p>
@@ -163,7 +163,7 @@ export default function Job({ job, jobs, setJob }) {
         <input
           type="tel"
           placeholder="დამსაქმებელი"
-          value={job.employer}
+          value={experience.employer}
           onChange={changeEmployer}
         />
         <p>მინიმუმ 2 სიმბოლო</p>
@@ -177,7 +177,7 @@ export default function Job({ job, jobs, setJob }) {
             type="date"
             placeholder="mm/dd/yyyy"
             className="fullname"
-            value={job.startDate}
+            value={experience.start_date}
             onChange={changeStartDate}
           />
         </label>
@@ -188,7 +188,7 @@ export default function Job({ job, jobs, setJob }) {
             type="date"
             placeholder="mm/dd/yyyy"
             className="fullname"
-            value={job.endDate}
+            value={experience.due_date}
             onChange={changeEndDate}
           />
         </label>
@@ -201,7 +201,7 @@ export default function Job({ job, jobs, setJob }) {
         <textarea
           placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
           className="aboutMe"
-          value={job.description}
+          value={experience.description}
           onChange={changeDescription}
         />
       </label>

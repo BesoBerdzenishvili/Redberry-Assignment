@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ResumeContext } from "../contexts/resumeContext";
 import { styled } from "../stitches.config";
 import at from "../assets/images/at.png";
-import phone from "../assets/images/phone.png";
+import phoneImg from "../assets/images/phone.png";
 import logo from "../assets/images/logo.png";
 import Organisation from "../components/Organisation";
 import RefreshBtn from "../components/RefreshBtn";
@@ -80,50 +80,52 @@ export default function ResumePage() {
         <Profile>
           <div>
             <FullName>
-              {resumeData.firstName && resumeData.firstName}{" "}
-              {resumeData.lastName && resumeData.lastName}
+              {resumeData.name && resumeData.name}{" "}
+              {resumeData.surname && resumeData.surname}
             </FullName>
             {resumeData.email && (
               <Contact>
                 <img src={at} alt="at sign (a in circle)" /> {resumeData.email}
               </Contact>
             )}
-            {resumeData.mobile && (
+            {resumeData.phone && (
               <Contact>
-                <img src={phone} alt="phone sign" /> {resumeData.mobile}
+                <img src={phoneImg} alt="phone sign" /> {resumeData.phone}
               </Contact>
             )}
-            {resumeData.aboutMe && <Subheader>ჩემ შესახებ</Subheader>}
-            <p>{resumeData.aboutMe && resumeData.aboutMe}</p>
+            {resumeData.about_me && <Subheader>ჩემ შესახებ</Subheader>}
+            <p>{resumeData.about_me && resumeData.about_me}</p>
           </div>
           {resumeData.photo && <Img src={photo} alt="profile" />}
         </Profile>
-        {resumeData.aboutMe && <Hr />}
-        {resumeData.job.length > 0 && <Subheader>გამოცდილება</Subheader>}
-        {resumeData.job &&
-          resumeData.job.map((i) => (
+        {resumeData.about_me && <Hr />}
+        {resumeData.experiences.length > 0 && (
+          <Subheader>გამოცდილება</Subheader>
+        )}
+        {resumeData.experiences &&
+          resumeData.experiences.map((i) => (
             <Organisation
               key={i.id}
               position={i.position}
               organisation={i.employer}
-              startDate={i.startDate}
-              endDate={i.endDate}
+              startDate={i.start_date}
+              endDate={i.due_date}
               description={i.description}
             />
           ))}
-        {resumeData.educationalInstitute.length > 0 && (
+        {resumeData.educations.length > 0 && (
           <>
             <Hr />
             <Subheader>განათლება</Subheader>
           </>
         )}
-        {resumeData.educationalInstitute &&
-          resumeData.educationalInstitute.map((i) => (
+        {resumeData.educations &&
+          resumeData.educations.map((i) => (
             <Organisation
               key={i.id}
-              position={i.school}
+              position={i.institute}
               organisation={i.degree}
-              endDate={i.endDate}
+              endDate={i.due_date}
               description={i.description}
             />
           ))}

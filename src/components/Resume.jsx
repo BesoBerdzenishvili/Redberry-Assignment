@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ResumeContext } from "../contexts/resumeContext";
 import { styled } from "../stitches.config";
 import at from "../assets/images/at.png";
-import phone from "../assets/images/phone.png";
+import phoneImg from "../assets/images/phone.png";
 import logo from "../assets/images/logo.png";
 import Organisation from "./Organisation";
 
@@ -64,14 +64,14 @@ const Img = styled("img", {
 
 export default function Resume() {
   const {
-    firstName,
-    lastName,
-    photo,
+    name,
+    surname,
+    image,
     aboutMe,
     email,
-    mobile,
-    job,
-    educationalInstitute,
+    phone,
+    experiences,
+    educations,
   } = useContext(ResumeContext);
 
   return (
@@ -79,49 +79,49 @@ export default function Resume() {
       <Profile>
         <div>
           <FullName>
-            {firstName && firstName} {lastName && lastName}
+            {name && name} {surname && surname}
           </FullName>
           {email && (
             <Contact>
               <img src={at} alt="at sign (a in circle)" /> {email}
             </Contact>
           )}
-          {mobile && (
+          {phone && (
             <Contact>
-              <img src={phone} alt="phone sign" /> {mobile}
+              <img src={phoneImg} alt="phone sign" /> {phone}
             </Contact>
           )}
           {aboutMe && <Subheader>ჩემ შესახებ</Subheader>}
           <p>{aboutMe && aboutMe}</p>
         </div>
-        {photo && <Img src={photo} alt="profile" />}
+        {image && <Img src={image} alt="profile" />}
       </Profile>
       {aboutMe && <Hr />}
-      {job.length > 0 && <Subheader>გამოცდილება</Subheader>}
-      {job &&
-        job.map((i) => (
+      {experiences.length > 0 && <Subheader>გამოცდილება</Subheader>}
+      {experiences &&
+        experiences.map((i) => (
           <Organisation
             key={i.id}
             position={i.position}
             organisation={i.employer}
-            startDate={i.startDate}
-            endDate={i.endDate}
+            startDate={i.start_date}
+            endDate={i.due_date}
             description={i.description}
           />
         ))}
-      {educationalInstitute.length > 0 && (
+      {educations.length > 0 && (
         <>
           <Hr />
           <Subheader>განათლება</Subheader>
         </>
       )}
-      {educationalInstitute &&
-        educationalInstitute.map((i) => (
+      {educations &&
+        educations.map((i) => (
           <Organisation
             key={i.id}
-            position={i.school}
+            position={i.institute}
             organisation={i.degree}
-            endDate={i.endDate}
+            endDate={i.due_date}
             description={i.description}
           />
         ))}
