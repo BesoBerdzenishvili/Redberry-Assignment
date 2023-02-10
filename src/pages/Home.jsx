@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "../stitches.config";
 import { Link } from "react-router-dom";
 import home_bg from "../assets/images/home_bg.png";
@@ -28,7 +28,10 @@ export default function Home() {
   document.body.style.backgroundPosition = `0 0, 1076px 473px, 70px 89px, 70px 25px`;
 
   return (
-    <Link to="/personal">
+    <Link
+      to="/personal"
+      onClick={() => (document.body.style.backgroundImage = "none")}
+    >
       <Button>რეზიუმეს დამატება</Button>
     </Link>
   );
