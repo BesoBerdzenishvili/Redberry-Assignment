@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ResumeContext } from "../contexts/resumeContext";
 import Resume from "../components/Resume";
 import RefreshBtn from "../components/RefreshBtn";
-import Header from "../components/Header";
+import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import Button from "../components/Button";
 import Job from "../components/Job";
