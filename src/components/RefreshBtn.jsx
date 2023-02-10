@@ -41,7 +41,9 @@ export default function RefreshBtn() {
         description: "",
       },
     ]);
-    setEducationalInstitute([]);
+    setEducationalInstitute([
+      { id: 1, school: "", degree: "", endDate: "", description: "" },
+    ]);
   };
   return (
     <Link to="/">

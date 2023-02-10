@@ -44,8 +44,11 @@ const ResumeContextProvider = ({ children }) => {
   });
   const [educationalInstitute, setEducationalInstitute] = useState(() => {
     const saved = localStorage.getItem("educationalInstitute");
-    return saved ? JSON.parse(saved) : [];
+    return saved
+      ? JSON.parse(saved)
+      : [{ id: 1, school: "", degree: "", endDate: "", description: "" }];
   });
+  const [resumeData, setResumeData] = useState({});
 
   useEffect(() => {
     localStorage.setItem("firstName", JSON.stringify(firstName));
@@ -89,6 +92,8 @@ const ResumeContextProvider = ({ children }) => {
         setJob,
         educationalInstitute,
         setEducationalInstitute,
+        resumeData,
+        setResumeData,
       }}
     >
       {children}

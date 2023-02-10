@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { styled } from "../stitches.config";
 import { Link } from "react-router-dom";
+import { ResumeContext } from "../contexts/resumeContext";
 import home_bg from "../assets/images/home_bg.png";
 import stump from "../assets/images/stump.png";
 import redberry_logo from "../assets/images/redberry_logo.png";
@@ -27,11 +28,15 @@ export default function Home() {
   document.body.style.backgroundRepeat = `no-repeat`;
   document.body.style.backgroundPosition = `0 0, 1076px 473px, 70px 89px, 70px 25px`;
 
+  const { setResumeData } = useContext(ResumeContext);
+
+  const handleClick = () => {
+    document.body.style.backgroundImage = "none";
+    setResumeData({});
+  };
+
   return (
-    <Link
-      to="/personal"
-      onClick={() => (document.body.style.backgroundImage = "none")}
-    >
+    <Link to="/personal" onClick={handleClick}>
       <Button>რეზიუმეს დამატება</Button>
     </Link>
   );
