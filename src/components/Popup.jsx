@@ -3,6 +3,10 @@ import { styled } from "../stitches.config";
 import x from "../assets/images/x.png";
 
 const Conrainer = styled("div", {
+  position: "absolute",
+  right: 70,
+  top: 53,
+
   padding: "28px 30px 30px",
 
   width: "427px",
@@ -20,9 +24,9 @@ const Conrainer = styled("div", {
 });
 
 const Img = styled("img", {
-  position: "relative",
-  right: -188,
-  top: -64,
+  position: "absolute",
+  right: 11,
+  top: 11,
   cursor: "pointer",
 });
 
