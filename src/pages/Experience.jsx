@@ -91,7 +91,7 @@ export default function Experience() {
     <Container>
       <LeftContainer>
         <RefreshBtn />
-        <Header pageNumber="2" pageTitle="გამოცდილება" />
+        <Header pageNumber="2" pageTitle="ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ" />
 
         {experiences.map((i, index) => (
           <Job
@@ -112,11 +112,11 @@ export default function Experience() {
         </Button>
         <Footer>
           <Link to="/personal">
-            <Button variant="nextPrevBtn">უკან</Button>
+            <Button variant="nextPrevBtn">ᲣᲙᲐᲜ</Button>
           </Link>
 
           <Link to={!restricted ? "/education" : "/experience"}>
-            <Button variant="nextPrevBtn">შემდეგი</Button>
+            <Button variant="nextPrevBtn">ᲨᲔᲛᲓᲔᲒᲘ</Button>
           </Link>
         </Footer>
       </LeftContainer>

@@ -11,21 +11,21 @@ const Container = styled("div", {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  fontFamily: "Helvetica Neue",
+  fontFamily: "HelveticaNeue",
   fontStyle: "normal",
   color: "#1A1A1A",
   paddingBottom: 12,
 });
 
 const PageTitle = styled("p", {
-  fontFamily: "Helvetica Neue",
+  fontFamily: "HelveticaNeue",
   fontStyle: "normal",
   fontWeight: 700,
   fontSize: 24,
 });
 
 const PageNumber = styled("p", {
-  fontFamily: "Helvetica Neue",
+  fontFamily: "HelveticaNeue",
   fontStyle: "normal",
   fontWeight: 400,
   fontSize: 20,

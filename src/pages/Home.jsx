@@ -52,7 +52,7 @@ export default function Home() {
         alt='text: "redberry" with red letters'
       />
       <Link to="/personal" onClick={handleClick}>
-        <Button>რეზიუმეს დამატება</Button>
+        <Button>ᲠᲔᲖᲘᲣᲛᲔᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ</Button>
       </Link>
     </Container>
   );

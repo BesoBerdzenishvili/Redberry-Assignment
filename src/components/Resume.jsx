@@ -94,7 +94,7 @@ export default function Resume() {
               <img src={phoneImg} alt="phone sign" /> {phone}
             </Contact>
           )}
-          {aboutMe && <Subheader>ჩემ შესახებ</Subheader>}
+          {aboutMe && <Subheader>ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ</Subheader>}
           <p>{aboutMe && aboutMe}</p>
         </div>
         {image && <Img src={image} alt="profile" />}
@@ -105,7 +105,7 @@ export default function Resume() {
         experiences[0].start_date !== "" ||
         experiences[0].due_date !== "" ||
         experiences[0].description !== "") && (
-        <Subheader>გამოცდილება</Subheader>
+        <Subheader>ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</Subheader>
       )}
       {experiences &&
         experiences.map((i) => (
@@ -118,13 +118,13 @@ export default function Resume() {
             description={i.description}
           />
         ))}
-      {(experiences[0].institute !== "" ||
-        experiences[0].degree !== "" ||
-        experiences[0].due_date !== "" ||
-        experiences[0].description !== "") && (
+      {(educations[0].institute !== "" ||
+        educations[0].degree !== "" ||
+        educations[0].due_date !== "" ||
+        educations[0].description !== "") && (
         <>
           <Hr />
-          <Subheader>განათლება</Subheader>
+          <Subheader>ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</Subheader>
         </>
       )}
       {educations &&

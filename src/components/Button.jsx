@@ -10,6 +10,7 @@ export default function Button({
   const buttonStyles = useMemo(
     () =>
       css({
+        fontFamily: "HelveticaNeue",
         fontSize: "16px",
         padding: "18px 60px",
         borderRadius: "4px",
