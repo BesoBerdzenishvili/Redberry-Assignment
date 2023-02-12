@@ -171,6 +171,16 @@ export default function Job({
           }
         })
       );
+    } else {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, start_date: "red" };
+          } else {
+            return i;
+          }
+        })
+      );
     }
     setExperiences(
       experiences.map((i) => {
@@ -188,6 +198,16 @@ export default function Job({
         errors.map((i) => {
           if (i.id === index + 1) {
             return { ...i, due_date: "green" };
+          } else {
+            return i;
+          }
+        })
+      );
+    } else {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, due_date: "red" };
           } else {
             return i;
           }

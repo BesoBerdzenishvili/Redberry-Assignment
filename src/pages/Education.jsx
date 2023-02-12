@@ -104,61 +104,62 @@ export default function Education() {
 
   const handleFinish = () => {
     // checkValidation();
-    if (!restricted) {
-      const data = {
-        name: name,
-        surname: surname,
-        image: image,
-        about_me: aboutMe,
-        email: email,
-        phone: phone,
-        experiences: experiences,
-        educations: educations,
-      };
-      setResumeData(data);
+    // if (!restricted) {
+    const data = {
+      name: name,
+      surname: surname,
+      image: image,
+      about_me: aboutMe,
+      email: email,
+      phone: phone,
+      experiences: experiences,
+      educations: educations,
+    };
+    setResumeData(data);
 
-      async () => {
-        try {
-          const response = await fetch(
-            "https://resume.redberryinternship.ge/api/cvs",
-            {
-              method: "POST",
-              body: JSON.stringify(data),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          const json = await response.json();
-
-          if (!response.ok) {
-            console.log(json.message);
+    async () => {
+      try {
+        const response = await fetch(
+          "https://resume.redberryinternship.ge/api/cvs",
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Accept: "multipart/form-data",
+            },
           }
-        } catch (e) {
-          console.log(e?.message ?? "Something went wrong");
-        }
-      };
+        );
+        const json = await response.json();
 
-      setName("");
-      setSurname("");
-      setImage("");
-      setAboutMe("");
-      setEmail("");
-      setPhone("");
-      setExperiences([
-        {
-          id: 1,
-          position: "",
-          employer: "",
-          start_date: "",
-          due_date: "",
-          description: "",
-        },
-      ]);
-      setEducations([
-        { id: 1, institute: "", degree: "", due_date: "", description: "" },
-      ]);
-    }
+        if (!response.ok) {
+          console.log(json.message);
+        }
+      } catch (e) {
+        console.error(e?.message ?? "Something went wrong");
+      }
+    };
+
+    setName("");
+    setSurname("");
+    setImage("");
+    setAboutMe("");
+    setEmail("");
+    setPhone("");
+    setExperiences([
+      {
+        id: 1,
+        position: "",
+        employer: "",
+        start_date: "",
+        due_date: "",
+        description: "",
+      },
+    ]);
+    setEducations([
+      { id: 1, institute: "", degree: "", due_date: "", description: "" },
+    ]);
+    // }
   };
 
   // const checkValidation = () => {
