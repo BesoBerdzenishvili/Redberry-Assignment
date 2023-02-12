@@ -31,6 +31,8 @@ const Container = styled("div", {
 
 const Profile = styled("div", {
   display: "flex",
+  justifyContent: "space-between",
+  width: "100%",
 });
 
 const FullName = styled("p", {
@@ -65,7 +67,7 @@ const Hr = styled("hr", {
 
 const Img = styled("img", {
   maxWidth: 246,
-  maxHeight: 246,
+  minHeight: 246,
   borderRadius: "50%",
   objectFit: "cover",
 });
@@ -96,7 +98,7 @@ export default function ResumePage() {
             {resumeData.about_me && <Subheader>ჩემ შესახებ</Subheader>}
             <p>{resumeData.about_me && resumeData.about_me}</p>
           </div>
-          {resumeData.photo && <Img src={photo} alt="profile" />}
+          {resumeData.image && <Img src={resumeData.image} alt="profile" />}
         </Profile>
         {resumeData.about_me && <Hr />}
         {resumeData.experiences.length > 0 && (

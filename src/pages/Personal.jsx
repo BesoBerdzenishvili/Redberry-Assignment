@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { styled } from "../stitches.config";
 import { ResumeContext } from "../contexts/resumeContext";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import RefreshBtn from "../components/RefreshBtn";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import Button from "../components/Button";
+import Input from "../components/Input";
 
 const Container = styled("div", {
   position: "relative",
@@ -32,12 +33,15 @@ const Form = styled("form", {
 
   "& input": {
     height: 48,
-    border: "1px solid #BCBCBC",
     borderRadius: 4,
     paddingLeft: 16,
     fontSize: 16,
     width: "100%",
     margin: "8px 0",
+  },
+
+  "& textarea:focus, input:focus": {
+    outline: "none",
   },
 
   "& .fullname": {
@@ -75,7 +79,6 @@ const Form = styled("form", {
   },
 
   "& .aboutMe": {
-    border: "1px solid #BCBCBC",
     borderRadius: 4,
     padding: "10px 0 0 16px ",
     fontSize: 16,
@@ -101,6 +104,16 @@ const Form = styled("form", {
 });
 
 export default function Personal() {
+  const [restricted, setRestricted] = useState(true);
+  const [errors, setErrors] = useState({
+    name: "#BCBCBC",
+    surname: "#BCBCBC",
+    image: "#BCBCBC",
+    aboutMe: "#BCBCBC",
+    email: "#BCBCBC",
+    phone: "#BCBCBC",
+    // restriction: "red",
+  });
   const {
     name,
     setName,
@@ -116,10 +129,116 @@ export default function Personal() {
     setPhone,
   } = useContext(ResumeContext);
 
-  const handleImgChange = (e) => {
-    const [file] = e.target.files;
-    setImage(URL.createObjectURL(file));
+  var georgian = /^[ა-ჰ0-9]*$/;
+  const changeName = (e) => {
+    if (e.target.value.length < 2 && !georgian.test(e.target.value)) {
+      setErrors({
+        ...errors,
+        name: "red",
+      });
+    } else if (e.target.value.length > 1 && georgian.test(e.target.value)) {
+      setErrors({
+        ...errors,
+        name: "green",
+      });
+    }
+
+    setName(e.target.value);
   };
+  const changeSurname = (e) => {
+    if (e.target.value.length < 2 && !georgian.test(e.target.value)) {
+      setErrors({
+        ...errors,
+        surname: "red",
+      });
+    } else if (e.target.value.length > 1 && georgian.test(e.target.value)) {
+      setErrors({
+        ...errors,
+        surname: "green",
+      });
+    }
+    setSurname(e.target.value);
+  };
+  const changeImage = (e) => {
+    if (e.target.value.length) {
+      setErrors({
+        ...errors,
+        image: "green",
+      });
+    }
+    // const [file] = e.target.files;
+    setImage(URL.createObjectURL(e.target.files[0]));
+  };
+  const changeAboutMe = (e) => {
+    if (e.target.value.length) {
+      setErrors({
+        ...errors,
+        aboutMe: "green",
+      });
+    }
+    setAboutMe(e.target.value);
+  };
+  const changeEmail = (e) => {
+    if (e.target.value.length && e.target.value.endsWith("@redberry.ge")) {
+      setErrors({
+        ...errors,
+        email: "green",
+      });
+    } else {
+      setErrors({
+        ...errors,
+        email: "red",
+      });
+    }
+    setEmail(e.target.value);
+  };
+  const validatePhone = (number) => {
+    if (
+      number.length === 17 &&
+      number.startsWith("+995 5") &&
+      number.indexOf(" ") === 4 &&
+      number.lastIndexOf(" ") === 14 &&
+      number.indexOf(" ", 7) === 8 &&
+      number.indexOf(" ", 10) === 11
+    ) {
+      return true;
+    }
+  };
+  const changePhone = (e) => {
+    if (e.target.value.length && validatePhone(e.target.value)) {
+      setErrors({
+        ...errors,
+        phone: "green",
+      });
+    } else {
+      setErrors({
+        ...errors,
+        phone: "red",
+      });
+    }
+    setPhone(e.target.value);
+  };
+
+  const checkRestricted = () => {
+    const error = Object.values(errors);
+    if (error.some((i) => i === "red")) {
+      setRestricted(true);
+    } else {
+      setRestricted(false);
+    }
+  };
+  useEffect(() => {
+    checkRestricted();
+  }, [errors]);
+
+  // const checkValidation = () => {
+  //   if (name || surname || image || email || phone) {
+  //     setErrors({
+  //       ...errors,
+  //       restriction: "green",
+  //     });
+  //   }
+  // };
 
   return (
     <Container>
@@ -131,36 +250,37 @@ export default function Personal() {
             <label>
               სახელი
               <br />
-              <input
+              <Input
                 type="text"
                 placeholder="ანზორ"
                 className="fullname"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={changeName}
+                style={{ border: `1px solid ${errors.name}` }}
+                check={errors.name}
+                short
               />
               <p>მინიმუმ 2 ასო, ქართული ასოები</p>
             </label>
             <label>
               გვარი
               <br />
-              <input
+              <Input
                 type="text"
                 placeholder="მუმლაძე"
                 className="fullname"
                 value={surname}
-                onChange={(e) => setSurname(e.target.value)}
+                onChange={changeSurname}
+                style={{ border: `1px solid ${errors.surname}` }}
+                check={errors.surname}
+                short
               />
               <p>მინიმუმ 2 ასო, ქართული ასოები</p>
             </label>
           </FullName>
           <label className="photoLabel">
             პირადი ფოტოს ატვირთვა
-            <input
-              type="file"
-              className="photo"
-              value={image}
-              onChange={handleImgChange}
-            />
+            <Input type="file" className="photo" onChange={changeImage} />
           </label>
           <br />
           <label>
@@ -170,18 +290,21 @@ export default function Personal() {
               placeholder="ზოგადი ინფო შენ შესახებ"
               className="aboutMe"
               value={aboutMe}
-              onChange={(e) => setAboutMe(e.target.value)}
+              onChange={changeAboutMe}
+              style={{ border: `1px solid ${errors.aboutMe}` }}
             />
           </label>
           <br />
           <label>
             ელ.ფოსტა
             <br />
-            <input
+            <Input
               type="email"
               placeholder="anzorr666@redberry.ge"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={changeEmail}
+              style={{ border: `1px solid ${errors.email}` }}
+              check={errors.email}
             />
             <p>უნდა მთავრდებოდეს @redberry.ge-ით</p>
           </label>
@@ -189,17 +312,22 @@ export default function Personal() {
           <label className="mobile">
             მობილურის ნომერი
             <br />
-            <input
+            <Input
               type="tel"
               placeholder="+995 551 12 34 56"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={changePhone}
+              style={{ border: `1px solid ${errors.phone}` }}
+              check={errors.phone}
             />
             <p>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</p>
           </label>
         </Form>
         <Footer one>
-          <Link to="/experience">
+          <Link
+            to={!restricted ? "/experience" : "/personal"}
+            // onClick={checkValidation}
+          >
             <Button variant="nextPrevBtn">შემდეგი</Button>
           </Link>
         </Footer>

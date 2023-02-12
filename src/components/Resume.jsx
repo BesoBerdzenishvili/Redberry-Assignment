@@ -23,6 +23,9 @@ const Container = styled("div", {
 
 const Profile = styled("div", {
   display: "flex",
+  justifyContent: "space-between",
+  width: "100%",
+  border: "1px solid magenta",
 });
 
 const FullName = styled("p", {
@@ -57,9 +60,12 @@ const Hr = styled("hr", {
 
 const Img = styled("img", {
   maxWidth: 246,
-  maxHeight: 246,
+  minHeight: 246,
   borderRadius: "50%",
   objectFit: "cover",
+  // position: "relative",
+  // left: 0,
+  // top: 0,
 });
 
 export default function Resume() {

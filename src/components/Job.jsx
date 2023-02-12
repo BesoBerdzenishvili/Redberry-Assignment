@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "../stitches.config";
+import Input from "./Input";
 
 const FullName = styled("div", {
   display: "flex",
@@ -13,12 +14,15 @@ const Form = styled("form", {
 
   "& input": {
     height: 48,
-    border: "1px solid #BCBCBC",
     borderRadius: 4,
     paddingLeft: 16,
     fontSize: 16,
     width: "100%",
     margin: "8px 0",
+  },
+
+  "& textarea:focus, input:focus": {
+    outline: "none",
   },
 
   "& .fullname": {
@@ -59,7 +63,6 @@ const Form = styled("form", {
   },
 
   "& .aboutMe": {
-    border: "1px solid #BCBCBC",
     borderRadius: 4,
     padding: "10px 0 0 16px ",
     fontSize: 16,
@@ -85,8 +88,36 @@ const Form = styled("form", {
   },
 });
 
-export default function Job({ experience, experiences, setExperiences }) {
+export default function Job({
+  experience,
+  experiences,
+  setExperiences,
+  errors,
+  setErrors,
+  index,
+}) {
   const changePosition = (e) => {
+    if (e.target.value.length < 2) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, position: "red" };
+          } else {
+            return i;
+          }
+        })
+      );
+    } else if (e.target.value.length > 1) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, position: "green" };
+          } else {
+            return i;
+          }
+        })
+      );
+    }
     setExperiences(
       experiences.map((i) => {
         if (i.id === experience.id) {
@@ -98,6 +129,27 @@ export default function Job({ experience, experiences, setExperiences }) {
     );
   };
   const changeEmployer = (e) => {
+    if (e.target.value.length < 2) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, employer: "red" };
+          } else {
+            return i;
+          }
+        })
+      );
+    } else if (e.target.value.length > 1) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, employer: "green" };
+          } else {
+            return i;
+          }
+        })
+      );
+    }
     setExperiences(
       experiences.map((i) => {
         if (i.id === experience.id) {
@@ -109,6 +161,17 @@ export default function Job({ experience, experiences, setExperiences }) {
     );
   };
   const changeStartDate = (e) => {
+    if (e.target.value.length > 0) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, start_date: "green" };
+          } else {
+            return i;
+          }
+        })
+      );
+    }
     setExperiences(
       experiences.map((i) => {
         if (i.id === experience.id) {
@@ -120,6 +183,17 @@ export default function Job({ experience, experiences, setExperiences }) {
     );
   };
   const changeEndDate = (e) => {
+    if (e.target.value.length > 0) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, due_date: "green" };
+          } else {
+            return i;
+          }
+        })
+      );
+    }
     setExperiences(
       experiences.map((i) => {
         if (i.id === experience.id) {
@@ -131,6 +205,27 @@ export default function Job({ experience, experiences, setExperiences }) {
     );
   };
   const changeDescription = (e) => {
+    if (e.target.value.length < 1) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, description: "red" };
+          } else {
+            return i;
+          }
+        })
+      );
+    } else if (e.target.value.length > 0) {
+      setErrors(
+        errors.map((i) => {
+          if (i.id === index + 1) {
+            return { ...i, description: "green" };
+          } else {
+            return i;
+          }
+        })
+      );
+    }
     setExperiences(
       experiences.map((i) => {
         if (i.id === experience.id) {
@@ -148,11 +243,13 @@ export default function Job({ experience, experiences, setExperiences }) {
       <label>
         თანამდებობა
         <br />
-        <input
+        <Input
           type="text"
           placeholder="დეველოპერი, დიზაინერი, ა.შ."
           value={experience.position}
           onChange={changePosition}
+          style={{ border: `1px solid ${errors[index].position}` }}
+          check={errors[index].position}
         />
         <p>მინიმუმ 2 სიმბოლო</p>
       </label>
@@ -160,11 +257,13 @@ export default function Job({ experience, experiences, setExperiences }) {
       <label className="text">
         დამსაქმებელი
         <br />
-        <input
+        <Input
           type="tel"
           placeholder="დამსაქმებელი"
           value={experience.employer}
           onChange={changeEmployer}
+          style={{ border: `1px solid ${errors[index].employer}` }}
+          check={errors[index].employer}
         />
         <p>მინიმუმ 2 სიმბოლო</p>
       </label>
@@ -179,6 +278,7 @@ export default function Job({ experience, experiences, setExperiences }) {
             className="fullname"
             value={experience.start_date}
             onChange={changeStartDate}
+            style={{ border: `1px solid ${errors[index].start_date}` }}
           />
         </label>
         <label>
@@ -190,6 +290,7 @@ export default function Job({ experience, experiences, setExperiences }) {
             className="fullname"
             value={experience.due_date}
             onChange={changeEndDate}
+            style={{ border: `1px solid ${errors[index].due_date}` }}
           />
         </label>
       </FullName>
@@ -203,6 +304,7 @@ export default function Job({ experience, experiences, setExperiences }) {
           className="aboutMe"
           value={experience.description}
           onChange={changeDescription}
+          style={{ border: `1px solid ${errors[index].description}` }}
         />
       </label>
     </Form>
