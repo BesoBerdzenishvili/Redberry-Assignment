@@ -258,7 +258,7 @@ export default function Personal() {
                 onChange={changeName}
                 style={{ border: `1px solid ${errors.name}` }}
                 check={errors.name}
-                short
+                short="true"
               />
               <p>მინიმუმ 2 ასო, ქართული ასოები</p>
             </label>
@@ -273,7 +273,7 @@ export default function Personal() {
                 onChange={changeSurname}
                 style={{ border: `1px solid ${errors.surname}` }}
                 check={errors.surname}
-                short
+                short="true"
               />
               <p>მინიმუმ 2 ასო, ქართული ასოები</p>
             </label>

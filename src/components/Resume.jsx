@@ -63,9 +63,6 @@ const Img = styled("img", {
   minHeight: 246,
   borderRadius: "50%",
   objectFit: "cover",
-  // position: "relative",
-  // left: 0,
-  // top: 0,
 });
 
 export default function Resume() {
@@ -103,7 +100,13 @@ export default function Resume() {
         {image && <Img src={image} alt="profile" />}
       </Profile>
       {aboutMe && <Hr />}
-      {experiences.length > 0 && <Subheader>გამოცდილება</Subheader>}
+      {(experiences[0].position !== "" ||
+        experiences[0].employer !== "" ||
+        experiences[0].start_date !== "" ||
+        experiences[0].due_date !== "" ||
+        experiences[0].description !== "") && (
+        <Subheader>გამოცდილება</Subheader>
+      )}
       {experiences &&
         experiences.map((i) => (
           <Organisation
@@ -115,7 +118,7 @@ export default function Resume() {
             description={i.description}
           />
         ))}
-      {educations.length > 0 && (
+      {educations[0].institute !== "" && (
         <>
           <Hr />
           <Subheader>განათლება</Subheader>
