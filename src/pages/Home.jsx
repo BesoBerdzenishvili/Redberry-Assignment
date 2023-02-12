@@ -7,6 +7,21 @@ import stump from "../assets/images/stump.png";
 import redberry_logo from "../assets/images/redberry_logo.png";
 import line from "../assets/images/line.png";
 
+const Container = styled("div", {
+  backgroundImage: `url(${home_bg}), url(${stump}), url(${line})`,
+  backgroundRepeat: `no-repeat`,
+  backgroundPosition: `0 0, 1076px 473px, 70px 89px`,
+  opacity: 1,
+  width: 1920,
+  height: 1080,
+});
+
+const RedberryLogo = styled("img", {
+  position: "relative",
+  left: 70,
+  top: 25,
+});
+
 const Button = styled("button", {
   position: "absolute",
   top: "50%",
@@ -24,20 +39,21 @@ const Button = styled("button", {
 });
 
 export default function Home() {
-  document.body.style.backgroundImage = `url(${home_bg}), url(${stump}), url(${line}), url(${redberry_logo})`;
-  document.body.style.backgroundRepeat = `no-repeat`;
-  document.body.style.backgroundPosition = `0 0, 1076px 473px, 70px 89px, 70px 25px`;
-
   const { setResumeData } = useContext(ResumeContext);
 
   const handleClick = () => {
-    document.body.style.backgroundImage = "none";
     setResumeData({});
   };
 
   return (
-    <Link to="/personal" onClick={handleClick}>
-      <Button>რეზიუმეს დამატება</Button>
-    </Link>
+    <Container>
+      <RedberryLogo
+        src={redberry_logo}
+        alt='text: "redberry" with red letters'
+      />
+      <Link to="/personal" onClick={handleClick}>
+        <Button>რეზიუმეს დამატება</Button>
+      </Link>
+    </Container>
   );
 }
