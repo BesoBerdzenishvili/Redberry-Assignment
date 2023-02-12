@@ -166,7 +166,6 @@ export default function Personal() {
         image: "green",
       });
     }
-    // const [file] = e.target.files;
     setImage(URL.createObjectURL(e.target.files[0]));
   };
   const changeAboutMe = (e) => {
@@ -244,7 +243,7 @@ export default function Personal() {
     <Container>
       <LeftContainer>
         <RefreshBtn />
-        <Header pageNumber="1" pageTitle="პირადი ინფო" />
+        <Header pageNumber="1" pageTitle="ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ" />
         <Form>
           <FullName>
             <label>
@@ -328,7 +327,7 @@ export default function Personal() {
             to={!restricted ? "/experience" : "/personal"}
             // onClick={checkValidation}
           >
-            <Button variant="nextPrevBtn">შემდეგი</Button>
+            <Button variant="nextPrevBtn">ᲨᲔᲛᲓᲔᲒᲘ</Button>
           </Link>
         </Footer>
       </LeftContainer>

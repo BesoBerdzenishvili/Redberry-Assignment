@@ -174,7 +174,7 @@ export default function Education() {
     <Container>
       <LeftContainer>
         <RefreshBtn />
-        <Header pageNumber="3" pageTitle="განათლება" />
+        <Header pageNumber="3" pageTitle="ᲒᲐᲜᲐᲗᲚᲔᲑᲐ" />
 
         {educations.map((i, index) => (
           <School
@@ -195,14 +195,14 @@ export default function Education() {
         </Button>
         <Footer>
           <Link to="/experience">
-            <Button variant="nextPrevBtn">უკან</Button>
+            <Button variant="nextPrevBtn">ᲣᲙᲐᲜ</Button>
           </Link>
 
           <Link
             to={!restricted ? "/resume" : "/education"}
             onClick={handleFinish}
           >
-            <Button variant="nextPrevBtn">დასრულება</Button>
+            <Button variant="nextPrevBtn">ᲓᲐᲡᲠᲣᲚᲔᲑᲐ</Button>
           </Link>
         </Footer>
       </LeftContainer>
