@@ -21,7 +21,7 @@ const Form = styled("form", {
     margin: "8px 0",
   },
 
-  "& textarea:focus, input:focus": {
+  "& select:focus, textarea:focus, input:focus": {
     outline: "none",
   },
 
@@ -30,6 +30,16 @@ const Form = styled("form", {
     paddingRight: 16,
     color: "rgba(0, 0, 0, 0.6)",
     fontSize: 19,
+  },
+
+  "& select": {
+    height: 48,
+    borderRadius: 4,
+    paddingLeft: 16,
+    fontSize: 16,
+    width: 371,
+    margin: "8px 0",
+    cursor: "pointer",
   },
 
   "& .photo": {
@@ -253,7 +263,11 @@ export default function School({
         <label>
           ხარისხი
           <br />
-          <select value={education.degree} onChange={changeDegree}>
+          <select
+            value={education.degree}
+            onChange={changeDegree}
+            style={{ border: `1px solid ${errors[index].degree}` }}
+          >
             {degrees.map((i) => (
               <option key={i.id} value={i.title}>
                 {i.title}

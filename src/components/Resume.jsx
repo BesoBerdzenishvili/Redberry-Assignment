@@ -118,7 +118,10 @@ export default function Resume() {
             description={i.description}
           />
         ))}
-      {educations[0].institute !== "" && (
+      {(experiences[0].institute !== "" ||
+        experiences[0].degree !== "" ||
+        experiences[0].due_date !== "" ||
+        experiences[0].description !== "") && (
         <>
           <Hr />
           <Subheader>განათლება</Subheader>
