@@ -8,8 +8,6 @@ const Container = styled("div", {
   position: "absolute",
   bottom: 65,
   left: 150,
-
-  border: "1px solid green",
 });
 
 export default function Footer({ children, one }) {

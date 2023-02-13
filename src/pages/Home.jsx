@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { styled } from "../stitches.config";
 import { Link } from "react-router-dom";
+import { styled } from "../stitches.config";
 import { ResumeContext } from "../contexts/resumeContext";
 import home_bg from "../assets/images/home_bg.png";
 import stump from "../assets/images/stump.png";
