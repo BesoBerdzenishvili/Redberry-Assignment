@@ -96,14 +96,14 @@ export default function ResumePage() {
                 <img src={phoneImg} alt="phone sign" /> {resumeData.phone}
               </Contact>
             )}
-            {resumeData.about_me && <Subheader>ჩემ შესახებ</Subheader>}
+            {resumeData.about_me && <Subheader>ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ</Subheader>}
             <p>{resumeData.about_me && resumeData.about_me}</p>
           </div>
           {resumeData.image && <Img src={resumeData.image} alt="profile" />}
         </Profile>
         {resumeData.about_me && <Hr />}
         {resumeData.experiences.length > 0 && (
-          <Subheader>გამოცდილება</Subheader>
+          <Subheader>ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</Subheader>
         )}
         {resumeData.experiences &&
           resumeData.experiences.map((i) => (
@@ -119,7 +119,7 @@ export default function ResumePage() {
         {resumeData.educations.length > 0 && (
           <>
             <Hr />
-            <Subheader>განათლება</Subheader>
+            <Subheader>ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</Subheader>
           </>
         )}
         {resumeData.educations &&
