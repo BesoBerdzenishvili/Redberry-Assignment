@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { globalStyles } from "./stitches.config";
-import { BrowserRouter } from "react-router-dom";
 import ResumeContextProvider from "./contexts/resumeContext";
 
 globalStyles();

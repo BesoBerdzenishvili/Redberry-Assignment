@@ -1,6 +1,6 @@
-import { styled } from "../stitches.config";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { styled } from "../stitches.config";
 import { ResumeContext } from "../contexts/resumeContext";
 import vector from "../assets/images/vector.png";
 

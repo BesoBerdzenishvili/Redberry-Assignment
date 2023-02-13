@@ -7,7 +7,6 @@ import logo from "../assets/images/logo.png";
 import Organisation from "./Organisation";
 
 const Container = styled("div", {
-  border: "1px solid green",
   position: "relative",
 
   maxWidth: 822,
@@ -25,7 +24,6 @@ const Profile = styled("div", {
   display: "flex",
   justifyContent: "space-between",
   width: "100%",
-  border: "1px solid magenta",
 });
 
 const FullName = styled("p", {

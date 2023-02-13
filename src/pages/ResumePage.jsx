@@ -22,6 +22,7 @@ const Container = styled("div", {
   width: "100%",
   minHeight: 1080,
   padding: "40px 80px 120px 80px",
+  marginBottom: 129,
 
   "& .redCircle": {
     position: "absolute",

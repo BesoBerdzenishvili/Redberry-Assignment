@@ -9,9 +9,6 @@ const FullName = styled("div", {
 const Form = styled("form", {
   width: "100%",
   margin: "77px 150px 0 0",
-
-  border: "1px solid orange",
-
   "& input": {
     height: 48,
     borderRadius: 4,
@@ -25,7 +22,7 @@ const Form = styled("form", {
     outline: "none",
   },
 
-  "& .fullname": {
+  "& .date": {
     width: 371,
     paddingRight: 16,
     color: "rgba(0, 0, 0, 0.6)",
@@ -40,36 +37,6 @@ const Form = styled("form", {
     width: 371,
     margin: "8px 0",
     cursor: "pointer",
-  },
-
-  "& .photo": {
-    display: "block",
-    color: "transparent",
-    border: "none",
-  },
-
-  "& .photo::-webkit-file-upload-button": {
-    visibility: "hidden",
-  },
-
-  "& .photo::before": {
-    content: "ატვირთვა",
-    color: "#ffffff",
-    backgroundColor: "#0E80BF",
-    display: "inline-block",
-    padding: "4px 15px",
-    borderRadius: 4,
-    cursor: "pointer",
-    marginTop: 10,
-  },
-
-  "& .photoLabel": {
-    display: "flex",
-    alignItems: "center",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-
-    border: "1px solid magenta",
   },
 
   "& .aboutMe": {
@@ -90,11 +57,6 @@ const Form = styled("form", {
     fontWeight: 300,
     fontSize: 14,
     color: "rgba(0, 0, 0, 0.6)",
-  },
-
-  "& .mobile": {
-    display: "block",
-    marginTop: 8,
   },
 });
 
@@ -281,7 +243,7 @@ export default function School({
           <Input
             type="date"
             placeholder="mm/dd/yyyy"
-            className="fullname"
+            className="date"
             value={education.due_date}
             onChange={changeEndDate}
             style={{ border: `1px solid ${errors[index].due_date}` }}

@@ -32,13 +32,13 @@ const Img = styled("img", {
 
 export default function Popup() {
   const [show, setShow] = useState(true);
-  const toggleShow = () => {
+  const handleClick = () => {
     setShow(false);
   };
   return (
     <Conrainer style={{ display: !show && "none" }}>
       რეზიუმე წარმატებით გაიგზავნა 🎉
-      <Img src={x} alt="x" onClick={toggleShow} />
+      <Img src={x} alt="x" onClick={handleClick} />
     </Conrainer>
   );
 }

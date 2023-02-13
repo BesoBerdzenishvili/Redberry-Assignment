@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { styled } from "../stitches.config";
 import { Link } from "react-router-dom";
+import { styled } from "../stitches.config";
 import { ResumeContext } from "../contexts/resumeContext";
 import Resume from "../components/Resume";
 import RefreshBtn from "../components/RefreshBtn";
@@ -19,11 +19,9 @@ const LeftContainer = styled("div", {
   maxWidth: 798,
   width: "100%",
   paddingBottom: 155,
-
-  border: "1px solid magenta",
 });
 
-const Hr = styled("div", {
+const Hr = styled("hr", {
   border: "1px solid #C1C1C1",
   margin: "50px 0",
 });

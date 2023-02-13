@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { styled } from "../stitches.config";
 import { ResumeContext } from "../contexts/resumeContext";
-import { Link } from "react-router-dom";
 import Resume from "../components/Resume";
 import RefreshBtn from "../components/RefreshBtn";
 import Header from "../layout/Header";
@@ -18,8 +18,6 @@ const LeftContainer = styled("div", {
   marginRight: 150,
   maxWidth: 798,
   width: "100%",
-
-  border: "1px solid magenta",
 });
 const FullName = styled("div", {
   display: "flex",
@@ -28,8 +26,6 @@ const FullName = styled("div", {
 const Form = styled("form", {
   width: "100%",
   margin: "77px 150px 0 0",
-
-  border: "1px solid orange",
 
   "& input": {
     height: 48,
@@ -74,8 +70,6 @@ const Form = styled("form", {
     alignItems: "center",
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
-
-    border: "1px solid magenta",
   },
 
   "& .aboutMe": {
@@ -112,7 +106,7 @@ export default function Personal() {
     aboutMe: "#BCBCBC",
     email: "#BCBCBC",
     phone: "#BCBCBC",
-    // restriction: "red",
+    restriction: "red",
   });
   const {
     name,
@@ -131,12 +125,12 @@ export default function Personal() {
 
   var georgian = /^[ა-ჰ0-9]*$/;
   const changeName = (e) => {
-    if (e.target.value.length < 2 && !georgian.test(e.target.value)) {
+    if (e.target.value.length < 2 || !georgian.test(e.target.value)) {
       setErrors({
         ...errors,
         name: "red",
       });
-    } else if (e.target.value.length > 1 && georgian.test(e.target.value)) {
+    } else if (e.target.value.length > 1 || georgian.test(e.target.value)) {
       setErrors({
         ...errors,
         name: "green",
@@ -146,12 +140,12 @@ export default function Personal() {
     setName(e.target.value);
   };
   const changeSurname = (e) => {
-    if (e.target.value.length < 2 && !georgian.test(e.target.value)) {
+    if (e.target.value.length < 2 || !georgian.test(e.target.value)) {
       setErrors({
         ...errors,
         surname: "red",
       });
-    } else if (e.target.value.length > 1 && georgian.test(e.target.value)) {
+    } else if (e.target.value.length > 1 || georgian.test(e.target.value)) {
       setErrors({
         ...errors,
         surname: "green",
@@ -230,14 +224,14 @@ export default function Personal() {
     checkRestricted();
   }, [errors]);
 
-  // const checkValidation = () => {
-  //   if (name || surname || image || email || phone) {
-  //     setErrors({
-  //       ...errors,
-  //       restriction: "green",
-  //     });
-  //   }
-  // };
+  const checkValidation = () => {
+    if (name || surname || image || email || phone) {
+      setErrors({
+        ...errors,
+        restriction: "green",
+      });
+    }
+  };
 
   return (
     <Container>
@@ -325,7 +319,7 @@ export default function Personal() {
         <Footer one>
           <Link
             to={!restricted ? "/experience" : "/personal"}
-            // onClick={checkValidation}
+            onClick={checkValidation}
           >
             <Button variant="nextPrevBtn">ᲨᲔᲛᲓᲔᲒᲘ</Button>
           </Link>
